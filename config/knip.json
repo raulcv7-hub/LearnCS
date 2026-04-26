@@ -1,0 +1,32 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "entry": [
+    "src/pages/**/*.{astro,ts}",
+    "src/components/shared-engineering/**/*.tsx",
+    "modules/**/*.mdx",
+    "astro.config.mjs"
+  ],
+  "project": [
+    "src/**/*.{ts,tsx,astro}",
+    "modules/**/*.mdx"
+  ],
+  "ignoreDependencies": [
+    "@styles/globals.css",
+    "vite/client",
+    "@tailwindcss/typography",
+    "prettier-plugin-astro",
+    "prettier-plugin-tailwindcss",
+    "@typescript-eslint/eslint-plugin",
+    "@typescript-eslint/parser",
+    "eslint-plugin-astro",
+    "eslint-plugin-react",
+    "eslint-plugin-react-hooks"
+  ],
+  "paths": {
+    "@core/*": ["src/core/*"],
+    "@components/*": ["src/components/*"],
+    "@styles/*": ["src/styles/*"],
+    "@layouts/*": ["src/layouts/*"],
+    "@modules/*": ["modules/*"]
+  }
+}

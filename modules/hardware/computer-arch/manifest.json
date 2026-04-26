@@ -1,0 +1,8 @@
+{
+  "id": "computer-arch",
+  "title": { "en": "Architecture", "es": "Arquitectura" },
+  "type": "hardware",
+  "order": 3,
+  "description": { "en": "Understanding CPU and Memory hierarchies.", "es": "Entendiendo CPU y jerarquías de Memoria." },
+  "lessons": ["von-neumann", "instruction-sets", "pipeline-logic"]
+}

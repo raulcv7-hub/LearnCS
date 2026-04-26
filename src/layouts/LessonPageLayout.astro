@@ -1,0 +1,88 @@
+---
+import { LessonContainer } from "@components/content/LessonContainer";
+import { LessonHero } from "@components/content/LessonHero";
+import { LessonNavigation } from "@components/content/LessonNavigation";
+import { LessonSidebar } from "@components/content/LessonSidebar";
+import type {
+  LessonManifest,
+  Locale,
+  SubjectManifest,
+} from "@core/domain/types";
+import Layout from "@layouts/Layout.astro";
+
+interface Props {
+  lang: Locale;
+  subjectId: string;
+  lessonId: string;
+  subject: SubjectManifest;
+  manifest: LessonManifest;
+  siblingLessons: LessonManifest[];
+  localizedTitle: string;
+  completed: boolean;
+}
+
+const {
+  lang,
+  subjectId,
+  lessonId,
+  subject,
+  manifest,
+  siblingLessons,
+  localizedTitle,
+  completed,
+} = Astro.props;
+
+const subjectTitle =
+  typeof subject.title === "string" ? subject.title : subject.title[lang];
+
+const breadcrumbItems = [
+  { label: subjectTitle, url: `/subject/${subjectId}` },
+  { label: localizedTitle, url: `/subject/${subjectId}/${lessonId}` },
+];
+---
+
+<Layout
+  title={localizedTitle}
+  theme={subjectId}
+  breadcrumbItems={breadcrumbItems}
+  lang={lang}
+>
+  <main class="mx-auto w-full max-w-[2200px] px-8 py-10">
+    <div class="grid grid-cols-1 gap-12 xl:grid-cols-[15%_70%_15%]">
+      <aside class="hidden xl:block">
+        <LessonSidebar
+          subjectId={subjectId}
+          currentLessonId={lessonId}
+          lessons={siblingLessons}
+          fragments={manifest.fragments}
+          lang={lang}
+          client:load
+        />
+      </aside>
+
+      <section class="min-w-0">
+        <LessonHero
+          title={localizedTitle}
+          difficulty={manifest.metadata.difficulty}
+          duration={manifest.metadata.estimatedTime}
+        />
+
+        <LessonContainer isCompleted={completed} client:load>
+          <slot />
+        </LessonContainer>
+
+        <div class="mb-20 mt-12">
+          <LessonNavigation
+            subjectId={subjectId}
+            currentLessonId={lessonId}
+            lessons={siblingLessons}
+            lang={lang}
+            client:load
+          />
+        </div>
+      </section>
+
+      <div class="hidden xl:block"></div>
+    </div>
+  </main>
+</Layout>

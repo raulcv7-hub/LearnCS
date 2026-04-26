@@ -1,0 +1,42 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "baseUrl": "..",
+    "paths": {
+      "@core/*": [
+        "src/core/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@styles/*": [
+        "src/styles/*"
+      ],
+      "@layouts/*": [
+        "src/layouts/*"
+      ],
+      "@modules/*": [
+        "modules/*"
+      ]
+    },
+    "types": [
+      "astro/client",
+      "vite/client"
+    ],
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "isolatedModules": true
+  },
+  "include": [
+    "../src/**/*",
+    "../modules/**/*",
+    "../.astro/types.d.ts"
+  ],
+  "exclude": [
+    "../node_modules"
+  ]
+}

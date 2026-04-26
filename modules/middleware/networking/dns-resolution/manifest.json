@@ -1,0 +1,14 @@
+{
+  "id": "dns-resolution",
+  "title": { "en": "Dns Resolution", "es": "Fundamentos de dns resolution" },
+  "learningPoints": { 
+    "en": ["Analyze system performance", "Implement dns-resolution patterns", "Debug complex state machines"],
+    "es": ["Analizar el rendimiento del sistema", "Implementar patrones de dns-resolution", "Depurar máquinas de estado complejas"] 
+  },
+  "fragments": ["intro", "conceptual-base", "implementation"],
+  "fragmentLabels": { "en": { "intro": "intro", "conceptual-base": "conceptual base", "implementation": "implementation" }, "es": { "intro": "Inicio", "conceptual-base": "Conceptos", "implementation": "Implementación" } },
+  "metadata": { 
+    "estimatedTime": "45m", 
+    "difficulty": "medium" 
+  }
+}

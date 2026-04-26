@@ -1,0 +1,49 @@
+---
+import { DashboardCategorySection } from '@components/ui/DashboardCategorySection';
+import type { Locale, SubjectType } from '@core/domain/types';
+import { getAllSubjects } from '@core/manifest/manifest-resolver';
+import Layout from '@layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  return [{ params: { lang: 'en' } }, { params: { lang: 'es' } }];
+}
+
+const { lang } = Astro.params as { lang: Locale };
+const subjects = await getAllSubjects();
+const categories: SubjectType[] = ['foundations', 'software', 'middleware', 'hardware', 'security'];
+
+const ui = {
+  en: { title: 'Computer Science', subtitle: 'A structured repository for engineering domains.' },
+  es: { title: 'Ciencias de la Computación', subtitle: 'Un repositorio estructurado para ingeniería.' }
+};
+---
+
+<Layout title={ui[lang].title} theme="default" lang={lang}>
+  <main class="relative min-h-screen px-4 py-20 pb-24">
+    <header class="animate-fade-in-up mx-auto mb-20 w-full max-w-7xl px-8">
+      <h1 class="text-text-main mb-8 text-7xl font-black tracking-tight md:text-9xl">
+        {ui[lang].title}
+      </h1>
+      <p class="text-text-muted text-2xl font-medium leading-relaxed max-w-4xl opacity-80">
+        {ui[lang].subtitle}
+      </p>
+    </header>
+
+    <div class="flex flex-col gap-24">
+      {categories.map((category, index) => (
+        /** 
+         * Compact Dashboard Orchestration.
+         * Reduced gap-40 to gap-24 for better vertical rhythm.
+         */
+        <DashboardCategorySection 
+          key={category}
+          category={category} 
+          subjects={subjects} 
+          lang={lang} 
+          index={index} 
+          client:load
+        />
+      ))}
+    </div>
+  </main>
+</Layout>

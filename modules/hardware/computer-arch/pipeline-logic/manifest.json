@@ -1,0 +1,14 @@
+{
+  "id": "pipeline-logic",
+  "title": { "en": "Pipeline Logic", "es": "Fundamentos de pipeline logic" },
+  "learningPoints": { 
+    "en": ["Analyze system performance", "Implement pipeline-logic patterns", "Debug complex state machines"],
+    "es": ["Analizar el rendimiento del sistema", "Implementar patrones de pipeline-logic", "Depurar máquinas de estado complejas"] 
+  },
+  "fragments": ["intro", "conceptual-base", "implementation"],
+  "fragmentLabels": { "en": { "intro": "intro", "conceptual-base": "conceptual base", "implementation": "implementation" }, "es": { "intro": "Inicio", "conceptual-base": "Conceptos", "implementation": "Implementación" } },
+  "metadata": { 
+    "estimatedTime": "2h", 
+    "difficulty": "medium" 
+  }
+}

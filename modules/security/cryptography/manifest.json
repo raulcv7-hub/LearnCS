@@ -1,0 +1,8 @@
+{
+  "id": "cryptography",
+  "title": { "en": "Cryptography", "es": "Criptografía" },
+  "type": "security",
+  "order": 5,
+  "description": { "en": "The math behind data integrity.", "es": "La matemática detrás de la integridad de datos." },
+  "lessons": ["symmetric-keys", "public-infrastructure", "hashing-algorithms"]
+}

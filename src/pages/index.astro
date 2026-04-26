@@ -1,0 +1,8 @@
+---
+/** 
+ * Root Redirection Logic.
+ * Uses standard HTML http-equiv for Meta attributes in Astro templates.
+ */
+import { resolvePath } from '@core/utils/path-utils';
+---
+<meta http-equiv="refresh" content={`0;url=${resolvePath('/en')}`} />

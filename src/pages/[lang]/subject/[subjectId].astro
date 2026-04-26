@@ -1,0 +1,87 @@
+---
+import { LessonListItem } from "@components/ui/LessonListItem";
+import { SubjectHero } from "@components/ui/SubjectHero";
+import { SubjectSidebar } from "@components/ui/SubjectSidebar";
+import type { Locale } from "@core/domain/types";
+import {
+  getLessonsForSubject,
+  getLocalizedStr,
+  getSubjectManifest,
+  getSubjectPaths,
+} from "@core/manifest/manifest-resolver";
+import Layout from "@layouts/Layout.astro";
+
+/** Static path generation for localized subject pages */
+export async function getStaticPaths() {
+  const paths = await getSubjectPaths();
+  const locales: Locale[] = ["en", "es"];
+  return locales.flatMap((lang) =>
+    paths.map((p) => ({ params: { ...p.params, lang } })),
+  );
+}
+
+const { lang, subjectId } = Astro.params as { lang: Locale; subjectId: string };
+
+/**
+ * Data Fetching Phase.
+ * We prioritize obtaining the subject manifest before attempting lesson resolution.
+ */
+const subject = await getSubjectManifest(subjectId);
+const title = getLocalizedStr(subject.title, lang);
+const description = getLocalizedStr(subject.description, lang);
+
+/** Robust Lesson Resolution */
+const lessonList = await getLessonsForSubject(subjectId, subject.lessons);
+
+const breadcrumbItems = [{ label: title, url: `/subject/${subjectId}` }];
+---
+
+<Layout
+  title={title}
+  theme={subjectId}
+  lang={lang}
+  breadcrumbItems={breadcrumbItems}
+>
+  <main class="mx-auto w-full max-w-[2200px] px-8 py-14">
+    <div class="grid grid-cols-1 gap-12 xl:grid-cols-[15%_70%_15%]">
+      <aside class="hidden xl:block">
+        <SubjectSidebar lang={lang} client:load />
+      </aside>
+
+      <section class="flex flex-col items-center min-w-0">
+        <div class="w-full max-w-3xl">
+          <SubjectHero
+            title={title}
+            type={subject.type}
+            description={description}
+          />
+        </div>
+
+        <div class="w-full space-y-4">
+          {
+            lessonList.length > 0 ? (
+              lessonList.map((lesson, index) => (
+                <LessonListItem
+                  key={lesson.id}
+                  subjectId={subjectId}
+                  lesson={lesson}
+                  index={index}
+                  lang={lang}
+                  client:load
+                />
+              ))
+            ) : (
+              /** Fallback visual state if no lessons are found for the context */ <div class="py-20 text-center border-2 border-dashed border-border-color rounded-[32px] opacity-40">
+                <p class="font-mono uppercase font-black tracking-widest text-text-muted">
+                  No lessons found in this subject.
+                </p>
+              </div>
+            )
+          }
+        </div>
+      </section>
+
+      <div class="hidden xl:block"></div>
+    </div>
+  </main>
+</Layout>

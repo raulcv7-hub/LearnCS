@@ -1,0 +1,8 @@
+{
+  "id": "boolean-logic",
+  "title": { "en": "Boolean Logic", "es": "Lógica Booleana" },
+  "type": "foundations",
+  "order": 1,
+  "description": { "en": "Foundational circuits and logical gates.", "es": "Circuitos fundamentales y compuertas lógicas." },
+  "lessons": ["logic-gates", "boolean-algebra", "karnaugh-maps"]
+}

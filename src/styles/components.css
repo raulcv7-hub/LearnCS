@@ -1,0 +1,55 @@
+@layer components {
+  .noise-bg {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.02;
+    pointer-events: none;
+  }
+
+  .hd-meta {
+    @apply font-mono uppercase font-black tracking-[0.2em] text-[14px];
+  }
+
+  .hd-heading {
+    @apply font-mono text-[14px] font-black uppercase tracking-tighter;
+  }
+
+  /** 
+   * High-Density Grid Mesh.
+   * Increased opacity to ensure the "Blueprint" aesthetic is visible across all monitors.
+   */
+  .blueprint-grid-mesh {
+    background-image:
+      linear-gradient(to right, rgb(var(--grid-line) / 0.25) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(var(--grid-line) / 0.25) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+
+  .prose {
+    @apply text-[18px] text-text-muted leading-relaxed max-w-none;
+  }
+
+  .prose h2 {
+    @apply text-4xl md:text-5xl font-black mb-6 mt-0 leading-none tracking-tighter text-text-main;
+  }
+
+  .prose h3 {
+    @apply text-2xl font-black mb-4 mt-8 text-text-main;
+  }
+
+  .fragment-wrapper {
+    @apply scroll-mt-32;
+  }
+
+  .fragment-wrapper + .fragment-wrapper {
+    @apply mt-6 pt-6 border-t border-border-color/10;
+  }
+
+  .prose code {
+    @apply font-mono text-color-accent-text px-1.5 py-0.5 rounded bg-color-accent-dim;
+  }
+
+  .prose pre {
+    @apply rounded-3xl border border-border-color bg-blueprint-bg p-8 my-6 text-lg;
+  }
+}

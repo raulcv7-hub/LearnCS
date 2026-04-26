@@ -1,0 +1,14 @@
+{
+  "id": "dry-paradigm",
+  "title": { "en": "Dry Paradigm", "es": "Fundamentos de dry paradigm" },
+  "learningPoints": { 
+    "en": ["Analyze system performance", "Implement dry-paradigm patterns", "Debug complex state machines"],
+    "es": ["Analizar el rendimiento del sistema", "Implementar patrones de dry-paradigm", "Depurar máquinas de estado complejas"] 
+  },
+  "fragments": ["intro", "conceptual-base", "implementation"],
+  "fragmentLabels": { "en": { "intro": "intro", "conceptual-base": "conceptual base", "implementation": "implementation" }, "es": { "intro": "Inicio", "conceptual-base": "Conceptos", "implementation": "Implementación" } },
+  "metadata": { 
+    "estimatedTime": "3h", 
+    "difficulty": "easy" 
+  }
+}

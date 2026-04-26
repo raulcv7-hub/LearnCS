@@ -1,0 +1,72 @@
+---
+import { LessonCompletionToggle } from '@components/ui/LessonCompletionToggle';
+import type { Locale } from '@core/domain/types';
+import { GlossaryWrapper } from '@core/glossary/GlossaryWrapper';
+import {
+  getFragmentComponent,
+  getLessonManifest,
+  getLessonPaths,
+  getLessonsForSubject,
+  getLocalizedStr,
+  getSimulatorComponents,
+  getSubjectManifest
+} from '@core/manifest/manifest-resolver';
+import { isLessonCompleted } from '@core/progress/progress-service';
+import LessonPageLayout from '@layouts/LessonPageLayout.astro';
+import React from 'react';
+
+export async function getStaticPaths() {
+  const paths = await getLessonPaths();
+  const locales: Locale[] = ['en', 'es'];
+  return locales.flatMap(lang => paths.map(p => ({ params: { ...p.params, lang } })));
+}
+
+const { lang, subjectId, lessonId } = Astro.params as { lang: Locale, subjectId: string, lessonId: string };
+
+const subject = await getSubjectManifest(subjectId);
+const manifest = await getLessonManifest(subjectId, lessonId);
+const siblingLessons = await getLessonsForSubject(subjectId, subject.lessons);
+const simulatorRegistry = await getSimulatorComponents(subjectId, lessonId);
+
+const fragments = await Promise.all(
+  manifest.fragments.map(async (fId: string) => {
+    const Content = await getFragmentComponent(subjectId, lessonId, fId, lang);
+    return { id: fId, Content };
+  })
+);
+
+/** 
+ * MDX UI Interceptors.
+ * We pass the current language context to the GlossaryWrapper.
+ */
+const mdxComponents = {
+  ...simulatorRegistry,
+  p: (props: any) => React.createElement(GlossaryWrapper, { ...props, as: 'p', lang }),
+  li: (props: any) => React.createElement(GlossaryWrapper, { ...props, as: 'li', lang }),
+  span: (props: any) => React.createElement(GlossaryWrapper, { ...props, as: 'span', lang }),
+};
+
+const localizedTitle = getLocalizedStr(manifest.title, lang);
+const completed = isLessonCompleted(lessonId);
+---
+
+<LessonPageLayout
+  lang={lang}
+  subjectId={subjectId}
+  lessonId={lessonId}
+  subject={subject}
+  manifest={manifest}
+  siblingLessons={siblingLessons}
+  localizedTitle={localizedTitle}
+  completed={completed}
+>
+  {fragments.map(({ id, Content }) => (
+    <div id={id} class="fragment-wrapper scroll-mt-32" key={id}>
+      <Content components={mdxComponents} lang={lang} />
+    </div>
+  ))}
+  
+  <div class="mt-12">
+    <LessonCompletionToggle lessonId={lessonId} lang={lang} client:load />
+  </div>
+</LessonPageLayout>

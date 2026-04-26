@@ -1,0 +1,8 @@
+/** Primary style entry point ensuring correct import order */
+@import "./variables.css";
+@import "./base.css";
+@import "./components.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

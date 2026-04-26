@@ -1,0 +1,14 @@
+{
+  "id": "osi-model",
+  "title": { "en": "Osi Model", "es": "Fundamentos de osi model" },
+  "learningPoints": { 
+    "en": ["Analyze system performance", "Implement osi-model patterns", "Debug complex state machines"],
+    "es": ["Analizar el rendimiento del sistema", "Implementar patrones de osi-model", "Depurar máquinas de estado complejas"] 
+  },
+  "fragments": ["intro", "conceptual-base", "implementation"],
+  "fragmentLabels": { "en": { "intro": "intro", "conceptual-base": "conceptual base", "implementation": "implementation" }, "es": { "intro": "Inicio", "conceptual-base": "Conceptos", "implementation": "Implementación" } },
+  "metadata": { 
+    "estimatedTime": "3h", 
+    "difficulty": "easy" 
+  }
+}

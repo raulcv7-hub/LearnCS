@@ -1,0 +1,40 @@
+{
+  "id": "tcp-ip-suite",
+  "title": {
+    "en": "Tcp Ip Suite",
+    "es": "Fundamentos de tcp ip suite"
+  },
+  "learningPoints": {
+    "en": [
+      "Analyze system performance",
+      "Implement tcp-ip-suite patterns",
+      "Debug complex state machines"
+    ],
+    "es": [
+      "Analizar el rendimiento del sistema",
+      "Implementar patrones de tcp-ip-suite",
+      "Depurar máquinas de estado complejas"
+    ]
+  },
+  "fragments": [
+    "intro",
+    "conceptual-base",
+    "implementation"
+  ],
+  "fragmentLabels": {
+    "en": {
+      "intro": "intro",
+      "conceptual-base": "conceptual base",
+      "implementation": "implementation"
+    },
+    "es": {
+      "intro": "Inicio",
+      "conceptual-base": "Conceptos",
+      "implementation": "Implementación"
+    }
+  },
+  "metadata": {
+    "estimatedTime": "1h 30m",
+    "difficulty": "hard"
+  }
+}

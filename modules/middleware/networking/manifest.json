@@ -1,0 +1,8 @@
+{
+  "id": "networking",
+  "title": { "en": "Networking", "es": "Redes" },
+  "type": "middleware",
+  "order": 4,
+  "description": { "en": "Deep dive into OSI and protocols.", "es": "Inmersión profunda en OSI y protocolos." },
+  "lessons": ["osi-model", "tcp-ip-suite", "dns-resolution"]
+}

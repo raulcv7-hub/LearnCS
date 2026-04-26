@@ -1,0 +1,25 @@
+/** Base Design Tokens: The Structural Blueprint */
+:root {
+  --blueprint-bg: 248 250 252;
+  --blueprint-surface: 255 255 255;
+  --text-main: 10 15 25;
+  --text-muted: 30 41 59;
+  --border-color: 226 232 240;
+  /** Enhanced visibility for the engineering grid in light mode */
+  --grid-line: 148 163 184;
+  --color-accent: 37 99 235;
+  --color-accent-dim: rgba(37, 99, 235, 0.08);
+  --color-accent-text: 29 78 216;
+}
+
+.dark {
+  --blueprint-bg: 2 6 23;
+  --blueprint-surface: 15 23 42;
+  --text-main: 248 250 252;
+  --text-muted: 148 163 184;
+  --border-color: 30 41 59;
+  --grid-line: 51 65 85;
+  --color-accent: 59 130 246;
+  --color-accent-dim: rgba(59, 130, 246, 0.15);
+  --color-accent-text: 96 165 250;
+}

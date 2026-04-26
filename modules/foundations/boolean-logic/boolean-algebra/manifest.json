@@ -1,0 +1,14 @@
+{
+  "id": "boolean-algebra",
+  "title": { "en": "Boolean Algebra", "es": "Fundamentos de boolean algebra" },
+  "learningPoints": { 
+    "en": ["Analyze system performance", "Implement boolean-algebra patterns", "Debug complex state machines"],
+    "es": ["Analizar el rendimiento del sistema", "Implementar patrones de boolean-algebra", "Depurar máquinas de estado complejas"] 
+  },
+  "fragments": ["intro", "conceptual-base", "implementation"],
+  "fragmentLabels": { "en": { "intro": "intro", "conceptual-base": "conceptual base", "implementation": "implementation" }, "es": { "intro": "Inicio", "conceptual-base": "Conceptos", "implementation": "Implementación" } },
+  "metadata": { 
+    "estimatedTime": "3h", 
+    "difficulty": "hard" 
+  }
+}

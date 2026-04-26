@@ -1,20 +1,60 @@
-# Dependencies
-node_modules/
-
-# Build artifacts
-dist/
-.astro/
-
-# Environment
-.env
-.env.*
-!.env.example
-
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# System files
+# --- SYSTEM ARTIFACTS ---
 .DS_Store
 Thumbs.db
+*.log
+*.log.*
+.history/
+.pnpm-debug.log*
+
+# --- DEPENDENCIES ---
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# --- BUILD & CACHE ---
+.astro/
+dist/
+.cache/
+.vite/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+.prettiercache
+
+# --- TYPESCRIPT ---
+*.tsbuildinfo
+next-env.d.ts
+
+# --- ENVIRONMENT & SECRETS ---
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+.env.test
+.env.sample
+!.env.example
+
+# --- IDE SPECIFIC ---
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# --- TESTING ---
+coverage/
+.nyc_output/
+junit.xml
+
+# --- DEPLOYMENT ---
+.vercel/
+.netlify/
+.github/pages-state/
+
+# --- OTHERS ---

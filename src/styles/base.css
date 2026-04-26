@@ -1,0 +1,36 @@
+/** Global base styles and resets */
+@layer base {
+  body {
+    @apply bg-blueprint-bg text-text-main;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-text-main font-bold tracking-tight;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgb(var(--blueprint-bg));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--border-color));
+    border-radius: 14px;
+  }
+
+  .theme-transition {
+    transition: background-color 300ms ease, border-color 300ms ease, color 300ms ease;
+  }
+}

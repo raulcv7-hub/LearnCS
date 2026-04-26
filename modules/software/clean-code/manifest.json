@@ -1,0 +1,8 @@
+{
+  "id": "clean-code",
+  "title": { "en": "Clean Code", "es": "Código Limpio" },
+  "type": "software",
+  "order": 2,
+  "description": { "en": "Principles for professional maintainability.", "es": "Principios para la mantenibilidad profesional." },
+  "lessons": ["solid-principles", "dry-paradigm", "kiss-philosophy"]
+}

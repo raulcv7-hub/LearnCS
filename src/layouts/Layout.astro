@@ -1,0 +1,54 @@
+---
+import { Header } from "@components/layout/Header";
+import MetaData from "@components/system/MetaData.astro";
+import ThemeScript from "@components/system/ThemeScript.astro";
+import Footer from "@components/ui/Footer.astro";
+import { SearchModal } from "@components/ui/SearchModal";
+import type { Locale } from "@core/domain/types";
+import { buildFullSearchIndex } from "@core/manifest/search-service";
+import "@styles/globals.css";
+
+interface Props {
+  title: string;
+  theme?: string;
+  breadcrumbItems?: { label: string; url: string }[];
+  lang?: Locale;
+}
+
+const {
+  title,
+  theme = "default",
+  breadcrumbItems = [],
+  lang = "en",
+} = Astro.props;
+const searchIndex = await buildFullSearchIndex(lang);
+---
+
+<!doctype html>
+<html lang={lang} data-theme={theme}>
+  <MetaData title={title} />
+  <ThemeScript />
+  <body class="relative flex min-h-screen flex-col pt-[72px]">
+    <div class="bg-blueprint-bg theme-transition fixed inset-0 z-[-3]"></div>
+    <div class="blueprint-grid-mesh fixed inset-0 z-[-2]"></div>
+    <div class="noise-bg fixed inset-0 z-[-1]"></div>
+
+    <Header client:load breadcrumbItems={breadcrumbItems} lang={lang} />
+
+    <div class="relative z-10 flex-grow">
+      <slot />
+    </div>
+
+    <SearchModal data={searchIndex} client:idle />
+    <Footer />
+  </body><style is:global>
+    html {
+      scroll-behavior: smooth;
+    }
+    /** Explicit selection styling to avoid bad selector errors in complex @apply */
+    ::selection {
+      background-color: rgba(var(--color-accent), 0.2);
+      color: rgb(var(--color-accent-text));
+    }
+  </style>
+</html>

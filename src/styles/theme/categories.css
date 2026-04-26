@@ -1,0 +1,56 @@
+/** Domain Accents: Categorical Color Logic */
+
+/* Foundations (Blue) */
+[data-theme='foundations'] {
+    --color-accent: 37 99 235;
+    --color-accent-text: 29 78 216;
+}
+
+.dark [data-theme='foundations'] {
+    --color-accent: 59 130 246;
+    --color-accent-text: 96 165 250;
+}
+
+/* Software (Emerald) */
+[data-theme='software'] {
+    --color-accent: 5 150 105;
+    --color-accent-text: 4 120 87;
+}
+
+.dark [data-theme='software'] {
+    --color-accent: 16 185 129;
+    --color-accent-text: 52 211 153;
+}
+
+/* Middleware (Indigo) */
+[data-theme='middleware'] {
+    --color-accent: 79 70 229;
+    --color-accent-text: 67 56 202;
+}
+
+.dark [data-theme='middleware'] {
+    --color-accent: 99 102 241;
+    --color-accent-text: 165 180 252;
+}
+
+/* Hardware (Orange) */
+[data-theme='hardware'] {
+    --color-accent: 234 88 12;
+    --color-accent-text: 194 65 12;
+}
+
+.dark [data-theme='hardware'] {
+    --color-accent: 249 115 22;
+    --color-accent-text: 251 146 60;
+}
+
+/* Security (Rose) */
+[data-theme='security'] {
+    --color-accent: 225 29 72;
+    --color-accent-text: 190 18 60;
+}
+
+.dark [data-theme='security'] {
+    --color-accent: 244 63 94;
+    --color-accent-text: 251 113 133;
+}

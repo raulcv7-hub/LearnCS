@@ -1,0 +1,40 @@
+---
+/** Standardized footer aligned with the global container constraints */
+const author = {
+  name: 'Raul CV',
+  github: 'https://github.com/raulcv7-hub',
+  linkedin: 'https://www.linkedin.com/in/raul-carrillo-4117693bb',
+};
+---
+
+<footer
+  class="border-border-color bg-blueprint-surface relative z-10 mt-auto w-full border-t px-8 py-6"
+>
+  <div class="mx-auto flex max-w-[1700px] flex-col items-center justify-between md:flex-row">
+    <div class="flex items-center gap-3">
+      <div class="bg-color-accent animate-pulse-slow h-2 w-2 rounded-full"></div>
+      <span class="text-text-main font-mono text-[14px] font-bold uppercase tracking-widest">
+        {author.name}
+      </span>
+    </div>
+
+    <nav class="flex flex-wrap gap-12">
+      <a
+        href={author.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-text-muted hover:text-color-accent font-mono text-[14px] font-bold uppercase tracking-widest transition-colors"
+      >
+        Github
+      </a>
+      <a
+        href={author.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-text-muted hover:text-color-accent font-mono text-[14px] font-bold uppercase tracking-widest transition-colors"
+      >
+        LinkedIn
+      </a>
+    </nav>
+  </div>
+</footer>
